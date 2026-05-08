@@ -1,10 +1,15 @@
 ## Setup Instructions
 
-1. Install the right npm version using NVM:
+1. Install the right npm version using NVM, run npm install:
 ```
 nvm install
 nvm use
 ```
+
+```
+npm install
+```
+
 2. Run the app:
 ```
 npm start
