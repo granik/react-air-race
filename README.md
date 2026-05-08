@@ -25,11 +25,13 @@ npm start
 
 Implemented features:
 * Map markers + List items user interaction
-* EItems iltering (only category filtering for now, easy to add more filters, well-extendable)
+* Items filtering (only category for now, easy to add more filters, well-extendable)
 
 ## Improvement TODOs
 
 * Improve items filtering: all "No items" text if a filetred set is empty
 * Fix layout-jump on changing filter value
+* make map dragding convenient
+* implement list pagination
 * better use TS, than pure JS - define custom types for props and state variables
 * test with BrowserStack to ensure all features are widely supported
