@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "title": "Alpine Air Challenge",
+    "description": "High-speed air race through the Austrian Alps with precision slalom gates and rapid altitude changes.",
+    "address": "Flugplatz Innsbruck, Fürstenweg 180, 6020 Innsbruck",
+    "country": "Austria",
+    "coordinates": [47.2602, 11.3443],
+    "category": "A"
+  },
+  {
+    "id": 2,
+    "title": "French Riviera Sky Masters",
+    "description": "Coastal air race over the Mediterranean featuring aerobatic maneuvers and low-level flying along the Côte d'Azur.",
+    "address": "Aéroport Nice Côte d'Azur, 06281 Nice",
+    "country": "France",
+    "coordinates": [43.6652, 7.2150],
+    "category": "A"
+  },
+  {
+    "id": 3,
+    "title": "Polish Pylon Pursuit",
+    "description": "Classic pylon air racing with multiple categories for light sport aircraft and racers.",
+    "address": "Lotnisko Warszawa-Babice, Krakowska 191, 05-080 Izabelin",
+    "country": "Poland",
+    "coordinates": [52.2685, 20.9105],
+    "category": "B"
+  },
+  {
+    "id": 4,
+    "title": "Danube Delta Drag",
+    "description": "Low-altitude speed race over the wetlands of the Danube Delta, testing navigation and speed control.",
+    "address": "Aeroportul Internațional Tulcea, Strada Aeroportului 31, Tulcea",
+    "country": "Romania",
+    "coordinates": [45.0625, 28.7143],
+    "category": "C"
+  },
+  {
+    "id": 6,
+    "title": "Irish Coast Guard Race",
+    "description": "Rugged air race along the Wild Atlantic Way with simulated search-and-rescue challenges.",
+    "address": "Shannon Airport, Shannon, Co. Clare",
+    "country": "Ireland",
+    "coordinates": [52.7020, -8.9248],
+    "category": "C"
+  },
+  {
+    "id": 7,
+    "title": "German Aero Grand Prix",
+    "description": "Premier air racing event featuring Red Bull-style pylons and high-G turns over the Rhine river.",
+    "address": "Flughafen Köln/Bonn, Kennedystraße, 51147 Köln",
+    "country": "Germany",
+    "coordinates": [50.8780, 7.1210],
+    "category": "A"
+  },
+  {
+    "id": 8,
+    "title": "Italian Dolomiti Air Run",
+    "description": "Mountain air race through the Dolomites' natural rock arches and canyons.",
+    "address": "Aeroporto di Bolzano, Via Aeroporto 2, 39100 Bolzano",
+    "country": "Italy",
+    "coordinates": [46.4621, 11.3262],
+    "category": "B"
+  },
+  {
+    "id": 9,
+    "title": "Dutch Lowlands Speed Cup",
+    "description": "Flat terrain air race just above tulip fields and polders, ideal for amateur racers.",
+    "address": "Lelystad Airport, Arendweg 1, 8218 PE Lelystad",
+    "country": "Netherlands",
+    "coordinates": [52.4600, 5.5277],
+    "category": "C"
+  },
+  {
+    "id": 10,
+    "title": "Spanish Sierra Air Circuit",
+    "description": "Technical air race through the Sierra Nevada mountains with altitude challenges.",
+    "address": "Aeropuerto Federico García Lorca Granada-Jaén, 18330 Chauchina",
+    "country": "Spain",
+    "coordinates": [37.1887, -3.7773],
+    "category": "B"
+  }
+]
