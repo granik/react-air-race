@@ -83,7 +83,7 @@ body {
 
     &--highlighted {
         background-color: $card-bg-active;
-        border-color: darken($border-color, 10%);
+        border-color: $border-color;
         @media (hover: none) {
             transform: translateY(-3px);
             box-shadow: $shadow-hover;

@@ -19,6 +19,7 @@ const SimpleGrid = ({title, items, highlightedItemId, onItemHover, onItemClick})
                 {'grid-item--highlighted': highlightedItemId === item.id}
               )}
               onMouseOver={() => onItemHover(item.id)}
+              onMouseOut={() => onItemHover(highlightedItemId)}
               onClick={() => onItemClick(item.id)}
               type="button"
               aria-current={highlightedItemId === item.id ? 'marker' : undefined}

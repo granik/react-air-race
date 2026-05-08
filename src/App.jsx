@@ -1,9 +1,9 @@
-import EventsMapContainer from './components/EventExplorer'
+import EventExplorer from './components/EventExplorer'
 
 function App() {
 
   return (
-     <EventsMapContainer/>
+     <EventExplorer/>
   )
 }
 

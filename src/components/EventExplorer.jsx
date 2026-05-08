@@ -29,12 +29,12 @@ const EventExplorer = () => {
     setHoveredEventId(id)
   }
 
-  const handleClick = useCallback((id) => {
+  const handleClick = (id) => {
       setSelectedEventId(
         id !== selectedEventId ? id : null
       )
-      setHoveredEventId(id)
-  }, [selectedEventId])
+      setHoveredEventId(id !== selectedEventId ? id : null)
+  }
 
   // Apply enabled filters to dataset.
   const filteredRows = useMemo(
