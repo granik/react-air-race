@@ -1,12 +1,20 @@
-import { useState, useCallback } from 'react'
-import MapView from './MapView'
-import SimpleGrid from './SimpleGrid'
+import { useState, useCallback, useMemo } from 'react'
+import MapView from './content-elements/MapView'
+import SimpleGrid from './content-elements/SimpleGrid'
+import FilterBar from './content-elements/FilterBar'
+import DropdownInput from './atoms/DropdownInput'
 
+// Data from JSON file.
 import dataRows from '../assets/air_race_data.json'
 
 const EventExplorer = () => {
   const [hoveredEventId, setHoveredEventId] = useState(null)
   const [selectedEventId, setSelectedEventId] = useState(null)
+
+  const [rowFilter, setRowFilter] = useState({
+    category: null,
+    // country: null,
+  });
 
   // const [eventData, setEventData] = useState([])
 
@@ -28,12 +36,39 @@ const EventExplorer = () => {
       setHoveredEventId(id)
   }, [selectedEventId])
 
+  // Apply enabled filters to dataset.
+  const filteredRows = useMemo(
+    () => dataRows.filter(
+      row => rowFilter.category === null ? true : row.category === rowFilter.category
+    ), [rowFilter])
+
+  const updateFilter = (field, value) => {
+    setSelectedEventId(null)
+    setHoveredEventId(null)
+
+    setRowFilter(rowFilter && {[field]: value})
+  }
+
+  const categoryOpts = ['all',
+    ...new Set(dataRows.map(row => row.category))
+  ];
+
+  // Updates filter by category.
+  const updateCategoryFilter = (value) => {
+    if (value === 'all') {
+      updateFilter('category', null);
+      return;
+    }
+    updateFilter('category', value);
+  }
+
   return (
     <section className="container event-explorer">
+      <h1>Explore Air-Racing events</h1>
       <div className="map" aria-labelledby="map-heading">
           <MapView
             title="Air Race locations on map"
-            markers={dataRows}
+            markers={filteredRows}
             highlightedMarkerId={hoveredEventId}
             expandedMarkerId={selectedEventId}
             onMarkerClick={handleClick}
@@ -42,9 +77,14 @@ const EventExplorer = () => {
       </div>
 
       <div className="event-list" aria-labelledby="grid-heading">
+
+        <FilterBar rowFilter={rowFilter}>
+          <DropdownInput name="category-filter" label="Category" options={categoryOpts} onChange={updateCategoryFilter}/>
+        </FilterBar>
+
         <SimpleGrid
           title="Air Racing Events"
-          items={dataRows}
+          items={filteredRows}
           highlightedItemId={selectedEventId}
           onItemHover={handleHover}
           onItemClick={handleClick}

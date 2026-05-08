@@ -1,16 +1,30 @@
-# React + Vite
+## Setup Instructions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Install the right npm version using NVM:
+```
+nvm install
+nvm use
+```
+2. Run the app:
+```
+npm start
+```
 
-Currently, two official plugins are available:
+3. In browser go to localhost URL displayed in console. E.g. `http://localhost:5173`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## My technical decisions
 
-## React Compiler
+* React as main tool
+* Keeping state in components, no tool like Redux/Zustand used
+* Vite project bundler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Implemented features:
+* Map markers + List items user interaction
+* EItems iltering (only category filtering for now, easy to add more filters, well-extendable)
 
-## Expanding the ESLint configuration
+## Improvement TODOs
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Improve items filtering: all "No items" text if a filetred set is empty
+* Fix layout-jump on changing filter value
+* better use TS, than pure JS - define custom types for props and state variables
+* test with BrowserStack to ensure all features are widely supported
