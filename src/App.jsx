@@ -1,9 +1,12 @@
-import EventExplorer from './components/EventExplorer'
+import MapExplorer from './components/MapExplorer'
+
+// Data from JSON file.
+import dataRows from './assets/air_race_data.json'
 
 function App() {
 
   return (
-     <EventExplorer/>
+     <MapExplorer items={dataRows}/>
   )
 }
 

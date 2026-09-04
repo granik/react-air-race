@@ -1,12 +1,14 @@
 import { Map, Marker, Overlay as MarkerDetails } from 'pigeon-maps'
 import { osm } from 'pigeon-maps/providers'
 
-const MapView = ({ title, markers, highlightedMarkerId, expandedMarkerId, onMarkerClick, onMarkerHover, centerCoords = [50.0000, 8.000] }) => {
+import './map.scss'
+
+const MapViewOsm = ({ title, markers, highlightedMarkerId, expandedMarkerId, onMarkerClick, onMarkerHover, centerCoords = [50.0000, 8.000] }) => {
 
   const expandedMarker = markers.find(marker => marker.id === expandedMarkerId)
 
   return (
-    <figure>
+    <figure className='mapView'>
       <Map
         provider={osm}
         height={475}
@@ -36,9 +38,9 @@ const MapView = ({ title, markers, highlightedMarkerId, expandedMarkerId, onMark
           </MarkerDetails>
         )}
       </Map>
-      <figcaption className='visually-hidden'>{title}</figcaption>
+      <figcaption>{title}</figcaption>
     </figure>
   )
 }
 
-export default MapView
+export default MapViewOsm
