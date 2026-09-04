@@ -1,16 +1,9 @@
 import { useId, useMemo, useState, type ReactNode } from 'react'
 import { Map, Marker, Overlay } from 'pigeon-maps'
 import { osm } from 'pigeon-maps/providers'
+import type { Coordinates, LocationId, LocationItemState } from './types/locations'
 
-export type LocationId = string | number
-export type Coordinates = readonly [latitude: number, longitude: number]
-
-export type LocationItemState = {
-  hovered: boolean
-  selected: boolean
-}
-
-export type LocationsMapProps<T> = {
+export interface LocationsMapProps<T> {
   items: readonly T[]
   getId: (item: T) => LocationId
   getCoordinates: (item: T) => Coordinates

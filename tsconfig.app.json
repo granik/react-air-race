@@ -1,7 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": true
+    "noEmit": true,
+    "rootDir": "."
   },
-  "include": ["src/App.tsx", "src/main.tsx", "src/LocationsMap.tsx"]
+  "include": ["src", "demo"]
 }

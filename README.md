@@ -42,3 +42,5 @@ npm run dev       # demo application
 npm run build     # ESM package, styles, and .d.ts files in dist/
 npm run lint
 ```
+
+The demo is isolated in `demo/`; it includes its own `App.tsx`, `main.tsx`, assets, static `public/` directory, and Vite HTML entry point. The library source remains in `src/`.

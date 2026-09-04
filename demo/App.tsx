@@ -1,4 +1,4 @@
-import { LocationsMap } from './LocationsMap'
+import { LocationsMap } from '../src'
 import dataRows from './assets/air_race_data.json'
 
 type AirRace = (typeof dataRows)[number]
