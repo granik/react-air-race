@@ -1,0 +1,9 @@
+@import './styles.css';
+
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f5f5f5; }
+.demo { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+.demo > h1 { text-align: center; }
+.locations-map__item strong, .locations-map__item span, .locations-map__item small { display: block; }
+.locations-map__item span { margin: .5rem 0; color: #4b5563; }
+.locations-map__item small { color: #6b7280; }
+.locations-map__popup p { margin: .5rem 0 0; }
