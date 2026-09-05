@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import MapViewOsm from './content-elements/Map/MapViewOsm'
-import GridView from './content-elements/List/GridView'
+import OsmMap from '@components/content-elements/Map/OsmMap'
+import { Grid } from '@components/content-elements/ListView'
 
 const MapExplorer = ({items}) => {
   const [hoveredItemId, setHoveredItemId] = useState(null)
@@ -21,7 +21,7 @@ const MapExplorer = ({items}) => {
     <div className="container event-explorer">
       <h1>Explore Air-Racing events</h1>
       <div className="map" aria-labelledby="map-heading">
-          <MapViewOsm
+          <OsmMap
             title="Air Race locations on map"
             markers={items}
             highlightedMarkerId={hoveredItemId}
@@ -33,7 +33,7 @@ const MapExplorer = ({items}) => {
 
       <div className="event-list" aria-labelledby="grid-heading">
 
-        <GridView
+        <Grid
           title="Air Racing Events"
           items={items}
           highlightedItemId={selectedItemId}

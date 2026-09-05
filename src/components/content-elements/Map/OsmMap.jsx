@@ -1,16 +1,17 @@
 import { Map, Marker, Overlay as MarkerDetails } from 'pigeon-maps'
-import { osm } from 'pigeon-maps/providers'
+import * as providers from 'pigeon-maps/providers'
 
-import './map.scss'
+import './osm-map.scss'
 
-const MapViewOsm = ({ title, markers, highlightedMarkerId, expandedMarkerId, onMarkerClick, onMarkerHover, centerCoords = [50.0000, 8.000] }) => {
+const OsmMap = ({ title, markers, highlightedMarkerId, expandedMarkerId, mapsProvider = 'osm', onMarkerClick, onMarkerHover, centerCoords = [50.0000, 8.000] }) => {
 
+  const provider = providers[mapsProvider] ?? providers.osm
   const expandedMarker = markers.find(marker => marker.id === expandedMarkerId)
 
   return (
     <figure className='mapView'>
       <Map
-        provider={osm}
+        provider={provider}
         height={475}
         defaultCenter={centerCoords}
         defaultZoom={4}
@@ -43,4 +44,4 @@ const MapViewOsm = ({ title, markers, highlightedMarkerId, expandedMarkerId, onM
   )
 }
 
-export default MapViewOsm
+export default OsmMap

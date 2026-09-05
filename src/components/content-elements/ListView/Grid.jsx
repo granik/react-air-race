@@ -6,7 +6,7 @@ import './grid.scss'
 // keyboard tab accecibility
 // 
 
-const GridView = ({title, items, footer, highlightedItemId, onItemHover, onItemClick}) => (
+const Grid = ({title, items, footer, highlightedItemId, onItemHover, onItemClick}) => (
   <div className="simple-grid" aria-labelledby="grid-title">
     <h2 id="grid-title">{title}</h2>
     <ul className="simple-grid-items">
@@ -45,4 +45,4 @@ const GridView = ({title, items, footer, highlightedItemId, onItemHover, onItemC
   </div>
 )
 
-export default GridView
+export default Grid
