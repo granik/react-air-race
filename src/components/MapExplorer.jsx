@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import OsmMap from '@components/content-elements/Map/OsmMap'
-import { Grid } from '@components/content-elements/ListView'
+import { useState } from "react";
+import { Map, List } from "@components/content-elements";
 
 const MapExplorer = ({
   markers,
@@ -9,7 +8,7 @@ const MapExplorer = ({
   title,
   listLabel = null,
   height = 400,
-  defaultCenter = [50.0000, 8.000],
+  defaultCenter = [50.0, 8.0],
   defaultZoom = 4,
   // className,
   getMarkerId,
@@ -19,43 +18,45 @@ const MapExplorer = ({
   onItemClick,
   onItemHover,
 }) => {
-  const [hoveredItemId, setHoveredItemId] = useState(null)
-  const [selectedItemId, setSelectedItemId] = useState(selectedId || defaultSelectedId)
+  const [hoveredItemId, setHoveredItemId] = useState(null);
+  const [selectedItemId, setSelectedItemId] = useState(
+    selectedId || defaultSelectedId,
+  );
 
   const handleHover = (event, itemId) => {
-    setHoveredItemId(itemId)
-    onItemHover && onItemHover(event)
-  }
+    setHoveredItemId(itemId);
+    /* eslint-disable-next-line no-unused-expressions */
+    onItemHover && onItemHover(event);
+  };
 
   const handleClick = (event, itemId) => {
-      setSelectedItemId(
-        itemId !== selectedItemId ? itemId : null
-      )
-      setHoveredItemId(itemId !== selectedItemId ? itemId : null)
-      onItemClick && onItemClick(event)
-  }
+    setSelectedItemId(itemId !== selectedItemId ? itemId : null);
+    setHoveredItemId(itemId !== selectedItemId ? itemId : null);
+    /* eslint-disable-next-line no-unused-expressions */
+    onItemClick && onItemClick(event);
+  };
 
   return (
     <div className="container event-explorer">
       <div className="map" aria-labelledby="map-heading">
-          <OsmMap
-            defaultCenter={defaultCenter}
-            defaultZoom={defaultZoom}
-            title={title}
-            markers={markers}
-            height={height}
-            highlightedMarkerId={hoveredItemId}
-            expandedMarkerId={selectedItemId}
-            onMarkerClick={handleClick}
-            onMarkerHover={handleHover}
-            getMarkerId={getMarkerId}
-            getMarkerCoords={getMarkerCoords}
-            renderMarkerPopup={renderMarkerPopup}
-          />
+        <Map
+          defaultCenter={defaultCenter}
+          defaultZoom={defaultZoom}
+          title={title}
+          markers={markers}
+          height={height}
+          highlightedMarkerId={hoveredItemId}
+          expandedMarkerId={selectedItemId}
+          onMarkerClick={handleClick}
+          onMarkerHover={handleHover}
+          getMarkerId={getMarkerId}
+          getMarkerCoords={getMarkerCoords}
+          renderMarkerPopup={renderMarkerPopup}
+        />
       </div>
 
       <div className="event-list" aria-labelledby="grid-heading">
-        <Grid
+        <List
           title={listLabel}
           items={markers}
           highlightedItemId={selectedItemId}
@@ -66,7 +67,7 @@ const MapExplorer = ({
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MapExplorer
+export default MapExplorer;
