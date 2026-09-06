@@ -4,39 +4,35 @@ import './grid.scss'
 
 // @todo
 // keyboard tab accecibility
-// 
+// h2 -> make configurable
 
-const Grid = ({title, items, footer, highlightedItemId, onItemHover, onItemClick}) => (
+const Grid = ({
+  title,
+  items,
+  highlightedItemId,
+  onItemHover, 
+  onItemClick,
+  getMarkerId,
+  renderListItem
+}) => (
   <div className="simple-grid" aria-labelledby="grid-title">
     <h2 id="grid-title">{title}</h2>
     <ul className="simple-grid-items">
       
       {items.map(item => (
-        <li key={item.id}>
-
+        <li key={getMarkerId(item)}>
           <button
             className={classNames(
               'grid-item',
-              {'grid-item--highlighted': highlightedItemId === item.id}
+              {'grid-item--highlighted': highlightedItemId === getMarkerId(item)}
             )}
-            onMouseOver={() => onItemHover(item.id)}
-            onMouseOut={() => onItemHover(highlightedItemId)}
-            onClick={() => onItemClick(item.id)}
+            onMouseOver={e => onItemHover(e, getMarkerId(item))}
+            onMouseOut={e => onItemHover(e, highlightedItemId)}
+            onClick={e => onItemClick(e, getMarkerId(item))}
             type="button"
-            aria-current={highlightedItemId === item.id ? 'marker' : undefined}
+            aria-current={highlightedItemId === getMarkerId(item) ? 'marker' : undefined}
           >
-            <div className="item-title">
-              {item.title}
-            </div>
-
-            <div className="item-text">
-              {item.description}
-            </div>
-
-            {!!footer && <div className="item-footer">
-              {footer}
-            </div>}
-
+            {renderListItem(item)}
           </button>
 
         </li>

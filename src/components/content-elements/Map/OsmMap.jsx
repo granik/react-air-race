@@ -1,42 +1,60 @@
-import { Map, Marker, Overlay as MarkerDetails } from 'pigeon-maps'
+import { Map, Marker, Overlay as MarkerPopup } from 'pigeon-maps'
 import * as providers from 'pigeon-maps/providers'
 
 import './osm-map.scss'
 
-const OsmMap = ({ title, markers, highlightedMarkerId, expandedMarkerId, mapsProvider = 'osm', onMarkerClick, onMarkerHover, centerCoords = [50.0000, 8.000] }) => {
+const OsmMap = ({ 
+  title,
+  markers, 
+  highlightedMarkerId,
+  highlightColor = '#ff0000',
+  expandedMarkerId, 
+  mapsProvider = 'osm', 
+  onMarkerClick, 
+  onMarkerHover, 
+  defaultCenter,
+  defaultZoom = 3,
+  metaWheelZoom = false,
+  twoFingerDrag = false,
+  height = 300,
+  markerWidth = 40,
+  popupOffset = [0, 30],
+  renderMarkerPopup,
+  getMarkerId,
+  getMarkerCoords,
+  }) => {
 
   const provider = providers[mapsProvider] ?? providers.osm
-  const expandedMarker = markers.find(marker => marker.id === expandedMarkerId)
+  const expandedMarker = markers.find(marker => getMarkerId(marker) === expandedMarkerId)
 
   return (
     <figure className='mapView'>
       <Map
         provider={provider}
-        height={475}
-        defaultCenter={centerCoords}
-        defaultZoom={4}
-        onClick={onMarkerClick}
-        metaWheelZoom={false}
-        twoFingerDrag={false}
+        height={height}
+        defaultCenter={defaultCenter}
+        defaultZoom={defaultZoom}
+        onClick={e => onMarkerClick(e, null)}
+        metaWheelZoom={metaWheelZoom}
+        twoFingerDrag={twoFingerDrag}
       >
         {markers && (markers.map(marker =>
-          <Marker key={marker.id}
-            color={highlightedMarkerId === marker.id && '#ff0000'}
-            width={50}
-            anchor={marker.coordinates}
-            payload={marker.id}
-            onMouseOver={() => onMarkerHover(marker.id)}
-            onClick={() => onMarkerClick(marker.id)}
+          <Marker key={getMarkerId(marker)}
+            color={highlightedMarkerId === getMarkerId(marker) && highlightColor}
+            width={markerWidth}
+            anchor={getMarkerCoords(marker)}
+            payload={getMarkerId(marker) }
+            onMouseOver={e => onMarkerHover(e, getMarkerId(marker) )}
+            onClick={e => onMarkerClick(e, getMarkerId(marker))}
           />)
         )}
 
         {expandedMarker && (
-          <MarkerDetails anchor={expandedMarker.coordinates} offset={[0, 30]}>
+          <MarkerPopup anchor={getMarkerCoords(expandedMarker)} offset={popupOffset}>
             <div className="popupContent">
-              <p><strong>{expandedMarker.title}</strong></p>
-              <p>{expandedMarker.description}</p>
+              {renderMarkerPopup(expandedMarker)}
             </div>
-          </MarkerDetails>
+          </MarkerPopup>
         )}
       </Map>
       <figcaption>{title}</figcaption>
